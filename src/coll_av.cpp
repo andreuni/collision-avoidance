@@ -14,8 +14,9 @@ geometry_msgs::Twist adj_msg;
 geometry_msgs::Twist speed;
 
 void cmd_callback(const geometry_msgs::Twist& msg){
-    ROS_INFO("\ninput v: %f input a: %f", msg.linear.x, msg.angular.z);
-
+    if(msg.linear.x!=0 || msg.angular.z!=0){ //mi interessa conoscere le velocita del robot in movimento
+		ROS_INFO("\ninput  v: %f  input a : %f", msg.linear.x, msg.angular.z);
+	}
     speed = msg; //mi salvo la velocita di input
 }
 
